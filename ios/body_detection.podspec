@@ -16,9 +16,9 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.static_framework = true
   s.dependency 'Flutter'
-  s.dependency 'GoogleMLKit/PoseDetection', '2.3.0'
-  s.dependency 'GoogleMLKit/PoseDetectionAccurate', '2.3.0'
-  s.dependency 'GoogleMLKit/SegmentationSelfie', '2.3.0'
+  s.dependency 'GoogleMLKit/PoseDetection', '2.4.0'
+  s.dependency 'GoogleMLKit/PoseDetectionAccurate', '2.4.0'
+  s.dependency 'GoogleMLKit/SegmentationSelfie', '2.4.0'
   s.platform = :ios, '10.0'
 
   # Flutter.framework does not contain a i386 slice.
