@@ -51,13 +51,9 @@ class CameraSession(private var context: Context) {
             lifecycleRegistry.currentState = Lifecycle.State.RESUMED
         }
 
-        fun doOnPause() {
-            lifecycleRegistry.currentState = Lifecycle.State.CREATED
-        }
-
-        fun doOnStop() {
-            lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
-        }
+       /* fun getLifecycle(): Lifecycle {
+            return lifecycleRegistry
+        }*/
 
         override val lifecycle: Lifecycle
             get() = lifecycleRegistry
