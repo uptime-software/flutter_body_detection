@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/body_detection.iml" filepath="$PROJECT_DIR$/.idea/modules/body_detection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/body_detection.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/body_detection.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/body_detection.main.iml" filepath="$PROJECT_DIR$/.idea/modules/body_detection.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/body_detection.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/body_detection.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -1,16 +1,13 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:body_detection/models/image_result.dart';
 import 'package:body_detection/models/pose.dart';
 import 'package:body_detection/models/body_mask.dart';
 import 'package:body_detection/png_image.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 import 'package:body_detection/body_detection.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'pose_mask_painter.dart';
 
@@ -39,16 +36,9 @@ class _MyAppState extends State<MyApp> {
   Size _imageSize = Size.zero;
 
   Future<void> _selectImage() async {
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(type: FileType.image);
-    if (result == null || result.files.isEmpty) return;
-    final path = result.files.single.path;
-    if (path != null) {
-      _resetState();
-      setState(() {
-        _selectedImage = Image.file(File(path));
-      });
-    }
+    // File picker functionality removed - requires file_picker package
+    // Add file_picker to pubspec.yaml if needed
+    return;
   }
 
   Future<void> _detectImagePose() async {
@@ -72,20 +62,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _startCameraStream() async {
-    final request = await Permission.camera.request();
-    if (request.isGranted) {
-      await BodyDetection.startCameraStream(
-        onFrameAvailable: _handleCameraImage,
-        onPoseAvailable: (pose) {
-          if (!_isDetectingPose) return;
-          _handlePose(pose);
-        },
-        onMaskAvailable: (mask) {
-          if (!_isDetectingBodyMask) return;
-          _handleBodyMask(mask);
-        },
-      );
-    }
+    // Permission handler removed - add permission_handler package if needed
+    await BodyDetection.startCameraStream(
+      onFrameAvailable: _handleCameraImage,
+      onPoseAvailable: (pose) {
+        if (!_isDetectingPose) return;
+        _handlePose(pose);
+      },
+      onMaskAvailable: (mask) {
+        if (!_isDetectingBodyMask) return;
+        _handleBodyMask(mask);
+      },
+    );
   }
 
   Future<void> _stopCameraStream() async {
@@ -103,8 +91,8 @@ class _MyAppState extends State<MyApp> {
 
     // To avoid a memory leak issue.
     // https://github.com/flutter/flutter/issues/60160
-    PaintingBinding.instance?.imageCache?.clear();
-    PaintingBinding.instance?.imageCache?.clearLiveImages();
+    PaintingBinding.instance.imageCache.clear();
+    PaintingBinding.instance.imageCache.clearLiveImages();
 
     final image = Image.memory(
       result.bytes,
